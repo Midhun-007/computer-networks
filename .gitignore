@@ -1,0 +1,19 @@
+# Build artifacts
+ns-3/
+build/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Results (keep structure)
+results/traces/*
+results/plots/*
+results/models/*
+results/tensorboard/*
+!results/.gitkeep
+
+# IDE
+.vscode/
+.idea/

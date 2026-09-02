@@ -1,0 +1,13 @@
+# DQN hyperparameters from Wang et al. (2021) Section 5.1
+gamma: 0.99
+learning_rate: 0.0005
+buffer_size: 50000
+exploration_fraction: 0.1
+exploration_initial_eps: 1.0
+exploration_final_eps: 0.02
+policy_net_arch: [64, 64]
+total_timesteps: 60000
+alpha: 0.5
+time_step_s: 0.1
+seed: 42
+tensorboard_log: results/tensorboard/
