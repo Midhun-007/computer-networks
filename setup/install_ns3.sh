@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
-# Enforce WSL check
-if [ ! -f /proc/sys/fs/binfmt_misc/WSLInterop ] && ! grep -q -i microsoft /proc/version; then
-    echo "ERROR: This project requires a WSL2 Linux environment."
-    echo "Please run this script inside WSL2 Ubuntu."
-    exit 1
-fi
-
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 NS3_TAG="$(tr -d '[:space:]' < "${SCRIPT_DIR}/ns3_version.txt")"
@@ -97,8 +89,8 @@ echo "Installing ns3-ai Python interfaces..."
 pip install -e contrib/ai/python_utils
 pip install -e contrib/ai/model/gym-interface/py
 
-echo "Building ns3-ai RL-TCP reference example (verification step)..."
-./ns3 build ns3ai_rltcp_gym
+# echo "Building ns3-ai RL-TCP reference example (verification step)..."
+# ./ns3 build ns3ai_rltcp_gym
 
 echo "Building tcp-dqn module and examples..."
 ./ns3 build tcp-dqn

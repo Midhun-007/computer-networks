@@ -40,12 +40,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--sim-time-s", type=float, default=None, help="Override simulation duration")
     return p.parse_args()
 
-
 def run_baseline(ns3: Path, prot: str, link: LinkConfig, traces_dir: Path) -> Path:
-    cmd = [
-        str(ns3 / "ns3"),
-        "run",
-        "tcp-dqn-baselines-topology -- "
+    args = (
         f"--transport_prot={prot} "
         f"--bandwidthMbps={link.bandwidth_mbps} "
         f"--baseRttMs={link.base_rtt_ms} "
@@ -54,11 +50,17 @@ def run_baseline(ns3: Path, prot: str, link: LinkConfig, traces_dir: Path) -> Pa
         f"--segmentSize={link.segment_size} "
         f"--simTimeS={link.sim_time_s} "
         f"--seed={link.seed} "
-        f"--traceDir={traces_dir}",
+        f"--traceDir={traces_dir}"
+    )
+
+    cmd = [
+        str(ns3 / "ns3"),
+        "run",
+        f"tcp-dqn-baselines-topology {args}",
     ]
+
     subprocess.run(cmd, cwd=ns3, check=True)
     return traces_dir / f"{prot}_{link.seed}.csv"
-
 
 def run_dqn_eval(model_path: Path, link: LinkConfig, dqn: DqnConfig, traces_dir: Path) -> Path:
     env = TcpDqnNs3Env(link_cfg=link, dqn_cfg=dqn)

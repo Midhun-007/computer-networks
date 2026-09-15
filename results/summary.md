@@ -2,12 +2,13 @@
 
 | Algorithm | Mean throughput (B/s) | Mean RTT (ms) | Loss rate |
 |---|---:|---:|---:|
-| NewReno | 0.00 | 56.83 | 5.000000 |
-| Cubic | 0.00 | 56.84 | 6.000000 |
-| HighSpeed | 0.00 | 56.93 | 6.000000 |
+| TCP-DQN | 2240714.25 | 56.99 | 0.000161 |
+| NewReno | 1493697.55 | 56.93 | 0.000199 |
+| Cubic | 1978982.66 | 56.87 | 0.000196 |
+| HighSpeed | 2096466.54 | 56.92 | 0.000196 |
 
 ## TCP-DQN speedup vs baselines
 
-- vs NewReno: N/A
-- vs Cubic: N/A
-- vs HighSpeed: N/A
+- vs NewReno: **1.50x**
+- vs Cubic: **1.13x**
+- vs HighSpeed: **1.07x**
