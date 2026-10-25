@@ -22,3 +22,16 @@ build_lib_example(
         ${libapplications}
         ${libinternet}
 )
+
+build_lib_example(
+    NAME tcp-dqn-multinode-topology
+    SOURCE_FILES tcp-dqn-multinode-topology.cc
+    LIBRARIES_TO_LINK
+        ${libtcp-dqn}
+        ${libcore}
+        ${libpoint-to-point}
+        ${libnetwork}
+        ${libapplications}
+        ${libinternet}
+        ${libtraffic-control}
+)

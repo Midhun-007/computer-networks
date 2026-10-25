@@ -76,6 +76,10 @@ def run_dqn_eval(model_path: Path, link: LinkConfig, dqn: DqnConfig, traces_dir:
 
 def main() -> None:
     args = parse_args()
+    args.model = args.model.resolve()
+    args.plots_dir = args.plots_dir.resolve()
+    args.traces_dir = args.traces_dir.resolve()
+    args.summary_out = args.summary_out.resolve()
     link = LinkConfig.from_yaml(args.link_config)
     dqn = DqnConfig.from_yaml(args.dqn_config)
     if args.sim_time_s is not None:

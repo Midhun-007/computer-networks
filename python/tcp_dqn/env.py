@@ -54,6 +54,10 @@ class TcpDqnNs3Env(gym.Env):
         }
 
     def _create_bridge(self) -> None:
+        import ctypes
+        core_lib = self.ns3_path / "build" / "lib" / "libns3.48-core-default.so"
+        if core_lib.exists():
+            ctypes.CDLL(str(core_lib), mode=ctypes.RTLD_GLOBAL)
         import ns3ai_gym_env  # noqa: F401
 
         self._env = gym.make(

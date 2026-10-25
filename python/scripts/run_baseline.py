@@ -30,7 +30,7 @@ def main() -> None:
     cmd = [
         str(ns3 / "ns3"),
         "run",
-        "tcp-dqn-baselines-topology -- "
+        "tcp-dqn-baselines-topology "
         f"--transport_prot={args.transport_prot} "
         f"--bandwidthMbps={link.bandwidth_mbps} "
         f"--baseRttMs={link.base_rtt_ms} "
